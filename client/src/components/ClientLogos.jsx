@@ -13,20 +13,13 @@ const ClientLogos = () => {
   ];
 
   return (
-    <section className="bg-[#0F0F11] py-6 px-4 border-b border-gray-800/30 overflow-hidden">
-      <div className="max-w-7xl mx-auto">
-        {/* Optional Section Label */}
-        <div className="text-center mb-6">
-          <p className="text-gray-400 text-sm font-medium tracking-wide uppercase">
-            Trusted by fast-moving startups
-          </p>
-        </div>
-
+    <section className="bg-[#0F0F11] py-3 px-4">
+      <div className="max-w-5xl mx-auto">
         {/* Scrolling Container */}
-        <div className="relative">
+        <div className="relative overflow-hidden">
           {/* Gradient Overlays for Smooth Edges */}
-          <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-[#0F0F11] to-transparent z-10 pointer-events-none"></div>
-          <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-[#0F0F11] to-transparent z-10 pointer-events-none"></div>
+          <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-[#0F0F11] to-transparent z-10 pointer-events-none"></div>
+          <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-[#0F0F11] to-transparent z-10 pointer-events-none"></div>
           
           {/* Scrolling Track */}
           <div className="flex animate-scroll">
@@ -34,10 +27,10 @@ const ClientLogos = () => {
             {clients.map((client, index) => (
               <div
                 key={`first-${index}`}
-                className="flex-shrink-0 mx-8 md:mx-12 lg:mx-16"
+                className="flex-shrink-0 mx-6 md:mx-8"
               >
-                <div className="group flex items-center justify-center h-12 md:h-14">
-                  <span className="text-white/70 hover:text-white font-medium text-lg md:text-xl lg:text-2xl transition-colors duration-300 whitespace-nowrap">
+                <div className="group flex items-center justify-center h-8 md:h-10">
+                  <span className="text-white/50 hover:text-white/80 font-medium text-sm md:text-base transition-colors duration-300 whitespace-nowrap">
                     {client}
                   </span>
                 </div>
@@ -48,10 +41,10 @@ const ClientLogos = () => {
             {clients.map((client, index) => (
               <div
                 key={`second-${index}`}
-                className="flex-shrink-0 mx-8 md:mx-12 lg:mx-16"
+                className="flex-shrink-0 mx-6 md:mx-8"
               >
-                <div className="group flex items-center justify-center h-12 md:h-14">
-                  <span className="text-white/70 hover:text-white font-medium text-lg md:text-xl lg:text-2xl transition-colors duration-300 whitespace-nowrap">
+                <div className="group flex items-center justify-center h-8 md:h-10">
+                  <span className="text-white/50 hover:text-white/80 font-medium text-sm md:text-base transition-colors duration-300 whitespace-nowrap">
                     {client}
                   </span>
                 </div>
@@ -72,7 +65,7 @@ const ClientLogos = () => {
         }
         
         .animate-scroll {
-          animation: scroll 30s linear infinite;
+          animation: scroll 25s linear infinite;
         }
         
         .animate-scroll:hover {
