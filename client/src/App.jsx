@@ -5,6 +5,7 @@ import WhyUs from './components/WhyUs';
 import ClientLogos from './components/ClientLogos';
 import Testimonials from './components/Testimonials';
 import FooterCTA from './components/FooterCTA';
+import PricingSection from './components/PricingSection';
 
 function App() {
   return (
@@ -12,9 +13,9 @@ function App() {
       <Navbar />
       <HeroSection />
       <ClientLogos />
-      <WhyUs />          
-         
+      <WhyUs />         
       <Testimonials />
+      <PricingSection />
       <FooterCTA />
     </div>
   );
