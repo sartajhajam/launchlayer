@@ -9,10 +9,10 @@ const HeroSection = () => {
 
   return (
     <>
-      <section className="min-h-screen bg-[#0F0F11] flex items-center justify-center px-4 py-12 pt-20 lg:pt-24">
+      <section className="min-h-screen bg-[#0F0F11] flex items-center justify-center px-4 py-12 pt-20 lg:pt-24 pb-8 lg:pb-12">
         <div className="max-w-4xl mx-auto text-center">
           {/* Main Headline */}
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-8 leading-tight tracking-tight">
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 lg:mb-8 leading-tight tracking-tight">
             Build Smart.{' '}
             <span className="text-transparent bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text">
               Launch Fast.
@@ -20,8 +20,8 @@ const HeroSection = () => {
           </h1>
           
           {/* Subheading */}
-          <p className="text-xl md:text-2xl lg:text-3xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed font-light">
-            We help startups and solo founders launch MVPs in weeks — not months.
+          <p className="text-xl md:text-2xl lg:text-3xl text-gray-300 mb-10 lg:mb-12 max-w-3xl mx-auto leading-relaxed font-light">
+            We build full-stack web and mobile apps in just 21 days — helping startups and solo founders launch MVPs fast, test early, and grow ahead. 
           </p>
           
           {/* Call to Action Button */}
@@ -35,7 +35,7 @@ const HeroSection = () => {
           </button>
           
           {/* Subtle accent elements */}
-          <div className="mt-16 flex justify-center space-x-8 opacity-40">
+          <div className="mt-12 lg:mt-16 flex justify-center space-x-8 opacity-40">
             <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
             <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse" style={{animationDelay: '0.5s'}}></div>
             <div className="w-2 h-2 bg-blue-600 rounded-full animate-pulse" style={{animationDelay: '1s'}}></div>

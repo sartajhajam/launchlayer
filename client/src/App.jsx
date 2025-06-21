@@ -1,7 +1,7 @@
 import React from 'react';
 import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
-import ServicesSection from './components/ServicesSection';
+import WhyUs from './components/WhyUs';
 import ProcessTimeline from './components/ProcessTimeline';
 import ClientLogos from './components/ClientLogos';
 import Testimonials from './components/Testimonials';
@@ -12,7 +12,8 @@ function App() {
     <div className="font-inter">
       <Navbar />
       <HeroSection />
-      <ServicesSection />
+      <WhyUs />
+      
       <ProcessTimeline />
       <ClientLogos />
       <Testimonials />
