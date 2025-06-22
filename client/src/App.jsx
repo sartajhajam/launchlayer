@@ -3,9 +3,10 @@ import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
 import WhyUs from './components/WhyUs';
 import ClientLogos from './components/ClientLogos';
+import PricingSection from './components/PricingSection';
+import FaqSection from './components/FaqSection';
 import Testimonials from './components/Testimonials';
 import FooterCTA from './components/FooterCTA';
-import PricingSection from './components/PricingSection';
 
 function App() {
   return (
@@ -14,8 +15,9 @@ function App() {
       <HeroSection />
       <ClientLogos />
       <WhyUs />         
-      <Testimonials />
       <PricingSection />
+      <Testimonials />
+      <FaqSection/>
       <FooterCTA />
     </div>
   );
