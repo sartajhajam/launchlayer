@@ -3,108 +3,157 @@ import { Calendar, ArrowRight, X, Check, Flame } from 'lucide-react';
 
 const PricingSection = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedPlan, setSelectedPlan] = useState('pro'); // Default to Pro plan
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
+  // Plan data
+  const planData = {
+    standard: {
+      type: "One Time Payment",
+      price: "$1997",
+      description: "One time payment for MVP Development",
+      features: [
+        "MVP Development in 1 Month",
+        "Founder Led Development", 
+        "Free Maintenance for Next Month",
+        "Scalable Tech Stack Nextjs, Supabase",
+        "Regular Updates"
+      ]
+    },
+    pro: {
+      type: "Recurring Payment",
+      price: "$2997",
+      description: "Recurring Payment for MVP Development",
+      features: [
+        "Everything in Standard +",
+        "Min 90 Hours of Development time per month",
+        "Time Flexibility",
+        "Continuous Maintenance and Updates",
+        "Quick Emergency Support",
+        "Marketing Support"
+      ]
+    }
+  };
+
+  const currentPlan = planData[selectedPlan];
+
   return (
     <>
-      <section id="pricing" className="bg-[#EDF0F2] py-16 px-4">
-        <div className="max-w-6xl mx-auto">
+      <section id="pricing" className="bg-[#EDF0F2] py-8 px-4">
+        <div className="max-w-5xl mx-auto">
           {/* Section Title */}
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 tracking-tight">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-3 tracking-tight">
               Pricing
             </h2>
-            <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">
               We offer a range of pricing options to suit your needs.
             </p>
           </div>
 
           {/* Pricing Cards Grid */}
-          <div className="grid lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-6 max-w-4xl mx-auto">
             
             {/* Left Card - MVP Experience CTA */}
-            <div className="group relative bg-gray-900 rounded-3xl p-8 lg:p-10 transition-all duration-300 hover:transform hover:scale-[1.02] hover:shadow-2xl">
+            <div className="group relative bg-gray-900 rounded-2xl p-6 transition-all duration-300 hover:transform hover:scale-[1.02] hover:shadow-xl">
               {/* Top Badge */}
-              <div className="absolute -top-3 right-6">
-                <div className="bg-green-500 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg">
+              <div className="absolute -top-2 right-4">
+                <div className="bg-green-500 text-white px-3 py-1 rounded-full text-xs font-semibold shadow-lg">
                   1 Slot Left
                 </div>
               </div>
 
               {/* Content */}
-              <div className="space-y-6">
+              <div className="space-y-4">
                 <div>
-                  <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
+                  <h3 className="text-xl md:text-2xl font-bold text-white mb-2">
                     Join MVP Experience
                   </h3>
-                  <p className="text-gray-300 text-lg leading-relaxed">
+                  <p className="text-gray-300 text-base">
                     Don't Sleep on your Ideas, Build your MVP with us.
                   </p>
                 </div>
 
                 {/* CTA Button */}
-                <div className="pt-4">
+                <div className="pt-2">
                   <button
                     onClick={openModal}
-                    className="group/btn w-full bg-white hover:bg-gray-100 text-gray-900 px-6 py-4 rounded-xl font-semibold text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl flex items-center justify-center gap-3"
+                    className="group/btn w-full bg-white hover:bg-gray-100 text-gray-900 px-5 py-3 rounded-xl font-semibold text-base transition-all duration-300 transform hover:scale-105 hover:shadow-lg flex items-center justify-center gap-2"
                   >
-                    <Calendar className="w-5 h-5" />
+                    <Calendar className="w-4 h-4" />
                     Book a 15 Minute Call
-                    <ArrowRight className="w-5 h-5 transition-transform group-hover/btn:translate-x-1" />
+                    <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
                   </button>
                   
-                  <p className="text-gray-400 text-sm mt-3 text-center">
+                  <p className="text-gray-400 text-xs mt-2 text-center">
                     Let's Discuss Your Idea and how we can help you
                   </p>
                 </div>
               </div>
 
               {/* Subtle Glow Effect */}
-              <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-blue-500/10 to-green-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/10 to-green-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
             </div>
 
-            {/* Right Card - Pro Plan */}
-            <div className="group relative bg-gray-900 rounded-3xl p-8 lg:p-10 transition-all duration-300 hover:transform hover:scale-[1.02] hover:shadow-2xl">
-              {/* Plan Tags */}
-              <div className="flex items-center gap-3 mb-6">
-                <span className="bg-gray-700 text-gray-300 px-3 py-1 rounded-full text-sm font-medium">
+            {/* Right Card - Dynamic Plan */}
+            <div className="group relative bg-gray-900 rounded-2xl p-6 transition-all duration-300 hover:transform hover:scale-[1.02] hover:shadow-xl">
+              {/* Plan Toggle Buttons */}
+              <div className="flex items-center gap-2 mb-4">
+                <button
+                  onClick={() => setSelectedPlan('standard')}
+                  className={`px-3 py-1 rounded-full text-xs font-medium transition-all duration-300 ${
+                    selectedPlan === 'standard'
+                      ? 'bg-yellow-500 text-gray-900 font-bold'
+                      : 'bg-gray-700 text-gray-300 hover:bg-gray-600'
+                  }`}
+                >
                   Standard
-                </span>
-                <span className="bg-yellow-500 text-gray-900 px-3 py-1 rounded-full text-sm font-bold flex items-center gap-1">
-                  <Flame className="w-4 h-4" />
+                </button>
+                <button
+                  onClick={() => setSelectedPlan('pro')}
+                  className={`px-3 py-1 rounded-full text-xs font-medium transition-all duration-300 flex items-center gap-1 ${
+                    selectedPlan === 'pro'
+                      ? 'bg-yellow-500 text-gray-900 font-bold'
+                      : 'bg-gray-700 text-gray-300 hover:bg-gray-600'
+                  }`}
+                >
+                  {selectedPlan === 'pro' && <Flame className="w-3 h-3" />}
                   Pro
-                </span>
+                  {selectedPlan !== 'pro' && <Flame className="w-3 h-3" />}
+                </button>
+              </div>
+
+              {/* Payment Type */}
+              <div className="mb-3">
+                <p className="text-gray-400 text-sm font-medium">
+                  {currentPlan.type}
+                </p>
               </div>
 
               {/* Price */}
-              <div className="mb-8">
-                <div className="flex items-baseline gap-2 mb-2">
-                  <span className="text-4xl md:text-5xl font-bold text-white">$2997</span>
+              <div className="mb-5">
+                <div className="flex items-baseline gap-1 mb-1">
+                  <span className="text-3xl md:text-4xl font-bold text-white">
+                    {currentPlan.price}
+                  </span>
                 </div>
-                <p className="text-gray-400 text-base">
-                  Recurring Payment for MVP Development
+                <p className="text-gray-400 text-sm">
+                  {currentPlan.description}
                 </p>
               </div>
 
               {/* Features List */}
-              <div className="space-y-4 mb-8">
-                <h4 className="text-white font-semibold text-lg mb-4">What's Included:</h4>
+              <div className="space-y-2 mb-5">
+                <h4 className="text-white font-semibold text-base mb-3">What's Included:</h4>
                 
-                {[
-                  "Everything in Standard +",
-                  "Min 90 Hours of Development time per month",
-                  "Time Flexibility",
-                  "Continuous Maintenance and Updates",
-                  "Quick Emergency Support",
-                  "Marketing Support"
-                ].map((feature, index) => (
-                  <div key={index} className="flex items-start gap-3">
-                    <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <Check className="w-3 h-3 text-white" />
+                {currentPlan.features.map((feature, index) => (
+                  <div key={index} className="flex items-start gap-2">
+                    <div className="w-4 h-4 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <Check className="w-2.5 h-2.5 text-white" />
                     </div>
-                    <span className="text-gray-300 text-base leading-relaxed">
+                    <span className="text-gray-300 text-sm">
                       {feature}
                     </span>
                   </div>
@@ -113,20 +162,20 @@ const PricingSection = () => {
 
               {/* Reserve Button */}
               <div className="flex justify-end">
-                <button className="group/btn bg-white hover:bg-gray-100 text-gray-900 px-6 py-3 rounded-xl font-semibold text-base transition-all duration-300 transform hover:scale-105 hover:shadow-lg flex items-center gap-2">
+                <button className="group/btn bg-white hover:bg-gray-100 text-gray-900 px-5 py-2 rounded-xl font-semibold text-sm transition-all duration-300 transform hover:scale-105 hover:shadow-lg flex items-center gap-2">
                   Reserve
-                  <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
+                  <ArrowRight className="w-3 h-3 transition-transform group-hover/btn:translate-x-1" />
                 </button>
               </div>
 
               {/* Subtle Glow Effect */}
-              <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-yellow-500/10 to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-yellow-500/10 to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
             </div>
           </div>
 
           {/* Optional Bottom Text */}
-          <div className="text-center mt-12">
-            <p className="text-gray-600 text-lg">
+          <div className="text-center mt-8">
+            <p className="text-gray-600 text-base">
               Questions about pricing? Let's discuss your specific needs.
             </p>
           </div>
