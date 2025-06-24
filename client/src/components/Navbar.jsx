@@ -22,6 +22,25 @@ const Navbar = () => {
     setIsMenuOpen(false);
   };
 
+  const handleSmoothScroll = (e, href) => {
+    e.preventDefault();
+    const targetId = href.replace('#', '');
+    const targetElement = document.getElementById(targetId);
+    
+    if (targetElement) {
+      targetElement.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+    closeMenu();
+  };
+
+  const handleBookCall = () => {
+    window.open('https://cal.com/sartajhajam', '_blank');
+    closeMenu();
+  };
+
   const navLinks = [
     { name: 'Why Us?', href: '#why-us' },
     { name: 'Our Work', href: '#work' },
@@ -62,7 +81,8 @@ const Navbar = () => {
               <a
                 key={index}
                 href={link.href}
-                className="text-gray-300 hover:text-white font-medium text-sm xl:text-base transition-colors duration-200 relative group"
+                onClick={(e) => handleSmoothScroll(e, link.href)}
+                className="text-gray-300 hover:text-white font-medium text-sm xl:text-base transition-colors duration-200 relative group cursor-pointer"
               >
                 {link.name}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
@@ -72,7 +92,10 @@ const Navbar = () => {
 
           {/* Desktop CTA Button */}
           <div className="hidden lg:block">
-            <button className="group relative inline-flex items-center gap-2 bg-[#4A90E2] hover:bg-blue-600 text-white px-6 py-3 rounded-xl font-semibold text-sm xl:text-base transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-blue-500/25">
+            <button 
+              onClick={handleBookCall}
+              className="group relative inline-flex items-center gap-2 bg-[#4A90E2] hover:bg-blue-600 text-white px-6 py-3 rounded-xl font-semibold text-sm xl:text-base transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-blue-500/25 cursor-pointer"
+            >
               <Calendar className="w-4 h-4" />
               Book a Call
             </button>
@@ -82,7 +105,7 @@ const Navbar = () => {
           <div className="lg:hidden">
             <button
               onClick={toggleMenu}
-              className="text-gray-300 hover:text-white p-2 rounded-lg transition-colors duration-200"
+              className="text-gray-300 hover:text-white p-2 rounded-lg transition-colors duration-200 cursor-pointer"
             >
               {isMenuOpen ? (
                 <X className="w-6 h-6" />
@@ -105,8 +128,8 @@ const Navbar = () => {
               <a
                 key={index}
                 href={link.href}
-                onClick={closeMenu}
-                className="block text-gray-300 hover:text-white font-medium py-2 px-4 rounded-lg hover:bg-gray-800/50 transition-all duration-200"
+                onClick={(e) => handleSmoothScroll(e, link.href)}
+                className="block text-gray-300 hover:text-white font-medium py-2 px-4 rounded-lg hover:bg-gray-800/50 transition-all duration-200 cursor-pointer"
               >
                 {link.name}
               </a>
@@ -115,8 +138,8 @@ const Navbar = () => {
             {/* Mobile CTA Button */}
             <div className="pt-4 px-4">
               <button 
-                onClick={closeMenu}
-                className="w-full inline-flex items-center justify-center gap-2 bg-[#4A90E2] hover:bg-blue-600 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300"
+                onClick={handleBookCall}
+                className="w-full inline-flex items-center justify-center gap-2 bg-[#4A90E2] hover:bg-blue-600 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 cursor-pointer"
               >
                 <Calendar className="w-4 h-4" />
                 Book a Call
